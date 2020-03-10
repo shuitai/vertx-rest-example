@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="LOG_LEVEL">info</property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%p] [%d{yyyy-MM-dd HH:mm:ss}] %msg%n" />
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="${LOG_LEVEL}">
+            <AppenderRef ref="Console" level="${LOG_LEVEL}"/>
+        </Root>
+    </Loggers>
+</Configuration>
