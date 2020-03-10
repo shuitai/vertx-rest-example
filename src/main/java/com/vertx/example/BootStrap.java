@@ -2,6 +2,7 @@ package com.vertx.example;
 
 import com.google.inject.Module;
 import com.vertx.example.api.TestRest;
+import com.vertx.example.api.TestRest2;
 import com.vertx.example.inject.GuiceInjectionProvider;
 import com.vertx.example.module.AdminModule;
 import com.vertx.example.vertical.HttpServerVertical;
@@ -31,7 +32,8 @@ public class BootStrap {
 
 
         int port = 8080;
-        Router router = new RestBuilder(vertx).injectWith(new GuiceInjectionProvider(getModules())).register(TestRest.class).build();
+        Router router = new RestBuilder(vertx).injectWith(new GuiceInjectionProvider(getModules())).register(TestRest.class,
+                TestRest2.class).build();
         HttpServerVertical httpServerVertical = new HttpServerVertical(router, port);
         vertx.deployVerticle(httpServerVertical, options, res -> {
             logger.info("=========== start ConeyApplication successful, port: {} ===========", port);
